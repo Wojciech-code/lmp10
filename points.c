@@ -4,8 +4,20 @@
 static int
 realloc_pts_failed (points_t * pts, int size)
 {
-  return realloc (pts->x, size * sizeof *pts->x) == NULL
-    || realloc (pts->y, size * sizeof *pts->y) == NULL;
+
+void *tmpx;
+void *tmpy;
+
+if( (tmpx = realloc (pts->x, size * sizeof *pts->x)) == NULL || (tmpy = realloc (pts->y, size * sizeof *pts->y)) == NULL){
+		return 1;
+	}
+	else{
+		pts->x = tmpx;
+		pts->y = tmpy;
+	}
+	return 0;
+// jeśli realocowane dane są równe NULL zwraca jeden - oznacza to błąd
+// jeśli zwraca zero oznacza to że wszystko przebiegło dobrze
 }
 
 int
