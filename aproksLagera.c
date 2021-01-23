@@ -59,7 +59,6 @@ else{
 return sum;
 }
 
-/
 
 //Funkcja obliczająca wartość x w funkcji podstawowej danego stopnia z bazy
 double
